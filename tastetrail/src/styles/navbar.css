@@ -1,0 +1,159 @@
+.navbar-container {
+    font-family: "Inter", sans-serif;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.top-nav {
+    width: 100%;
+    margin: 2px 0;
+    padding: 0px;
+    background-color: #6bcc90;
+}
+
+.top-nav p {
+    padding: 8px 100px;
+    margin: 0;
+    color: #333333;
+    font-size: 0.8rem;
+}
+
+.top-nav a {
+    transition: 0.3s ease-in;
+    text-decoration: none;
+    color: #333333;
+}
+
+.top-nav a:hover {
+    color: #f7f7f7;
+}
+
+.top-nav-header {
+    padding: 25px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px groove lightgray;
+}
+
+.top-nav-header h1 {
+    font-size: 3rem;
+    font-family: "Caveat", cursive;
+    padding: 2px;
+    margin: 0;
+    font-style: italic;
+    font-weight: 900;
+    color: #333333;
+}
+
+.top-nav-header p {
+    font-size: 1rem;
+    font-family: "Libertinus Sans", sans-serif;
+    padding: 0px 8px;
+    margin: 0;
+    color: #ff6b6b;
+}
+
+.nav-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-search {
+    min-height: 30px;
+    width: 180px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 0 5px;
+    font-size: 0.9rem;
+    outline: none;
+    background: transparent;
+    color: #333333;
+}
+
+.nav-search:hover,
+.nav-search:focus {
+    border-bottom: 1px solid black;
+}
+
+.nav-search-icon {
+    color: white;
+    padding: 4px;
+    border-radius: 50%;
+    background-color: #ff6b6b;
+    transition: 0.3s ease !important;
+}
+
+.nav-search-icon:hover {
+    color: #ff6b6b;
+    background-color: white;
+    border: 1px solid #ff6b6b;
+}
+
+.navbar-options {
+    padding: 0 100px;
+    margin: 0;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-options ul {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar-options ul li {
+    margin: 0;
+    font-size: 0.8rem;
+    transition: 0.3s ease-in-out;
+    color: #333333;
+     padding: 10px;
+}
+
+.navbar-options ul li:hover {
+    color: #ff6b6b;
+    cursor: pointer;
+}
+
+.navbar-link {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-link:hover {
+    color: white;
+    background-color: #ff6b6b;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 26px;
+}
+
+@media (max-width: 1000px) {
+    .hamburger {
+        display: block;
+    }
+    .navbar-options {
+        display: none;
+    }
+    .nav-search-container {
+        display: none;
+    }
+}
