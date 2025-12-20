@@ -1,0 +1,160 @@
+.footer-container {
+    width: 100%;
+    max-height: 800px;
+    height: auto;
+    background-color: #cdf8dd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-header {
+    padding: 50px 100px;
+    text-align: center;
+    transition: 0.3s ease;
+    position: sticky;
+}
+
+.footer-header h1 {
+    font-size: 3rem;
+    font-family: "Caveat", cursive;
+    padding: 2px;
+    margin: 0;
+    font-style: italic;
+    font-weight: 900;
+    color: #333;
+}
+
+.footer-header p {
+    font-size: 1rem;
+    font-family: "Libertinus Sans", sans-serif;
+    padding: 0px 8px;
+    margin: 0;
+    color: #ff6b6b;
+    word-spacing: 5px;
+}
+
+.footer-quote-container {
+    margin-top: 30px;
+}
+
+.footer-quote-container p {
+    font-size: 1rem;
+    color: #333;
+    word-spacing: normal;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.social-links-container {
+    display: flex;
+    /* flex-direction: ; */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin: 0 20px;
+}
+
+.social-links-container span {
+    color: #ff6b6b;
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.instagram:hover {
+    color: #e1306c;
+    transition: 0.3s ease;
+}
+
+.facebook:hover {
+    color: #3b5998;
+    transition: 0.3s ease;
+}
+
+.whatsapp:hover {
+    color: #25d366;
+    transition: 0.3s ease;
+}
+
+.x:hover {
+    color: #1da1f2;
+    transition: 0.3s ease;
+}
+
+.footer-contact-container {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    gap: 10px;
+    position: relative;
+}
+
+.footer-contact-input {
+    width: 100%;
+    min-height: 40px;
+    max-width: 400px;
+    min-width: 200px;
+    border: 1px solid #333;
+    padding: 0 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.footer-contact-container textarea {
+    width: 100%;
+    max-width: 400px;
+    min-width: 200px;
+    min-height: 80px;
+    border: 1px solid #333;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.footer-contact-container button {
+    width: 100%;
+    max-width: 400px;
+    min-width: 200px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 12px;
+    border: 2px solid #ff6b6b;
+    color: #ff6b6b;
+    font-size: 1rem;
+    font-weight: 550;
+    padding: 0 10px;
+    transition: 0.3s ease;
+}
+
+.footer-contact-container button:hover {
+    background-color: #ff6b6b;
+    color: white;
+    transition: 0.3s ease;
+}
+
+@media (max-width: 850px) {
+    .footer-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer-contact-input {
+        min-width: 100px;
+        max-width: 200px;
+    }
+    .footer-contact-container textarea {
+        min-width: 100px;
+        max-width: 200px;
+    }   
+    .footer-contact-container button {
+        min-width: 100px;
+        max-width: 200px;
+    }   
+}
