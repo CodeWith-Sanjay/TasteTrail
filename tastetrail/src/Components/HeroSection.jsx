@@ -44,7 +44,7 @@ const HeroSection = () => {
       setCurrentStep(prev => 
         prev === HowItsWorksContent.length - 1 ? 0 : prev + 1
       )
-    }, 5000)
+    }, 4000)
 
     return () => clearTimeout(timer)
   }, [currentStep, imageIsHovered]);
@@ -53,6 +53,8 @@ const HeroSection = () => {
     setDirection('previous');
     if(currentStep > 0) {
       setCurrentStep(prev => prev - 1);
+    } else if (currentStep === 0) {
+      setCurrentStep(HowItsWorksContent.length - 1);
     }
   }
 
@@ -60,6 +62,8 @@ const HeroSection = () => {
     setDirection('next');
     if(currentStep < HowItsWorksContent.length - 1) {
       setCurrentStep(prev => prev + 1);
+    } else if (currentStep <= HowItsWorksContent.length) {
+      setCurrentStep(0);
     }
   }
 

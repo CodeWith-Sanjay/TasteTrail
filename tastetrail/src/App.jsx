@@ -5,6 +5,9 @@ import './App.css'
 
 import LandingPage from './Components/LandingPage.jsx'
 import DashboardLayout from './Pages/DashboardLayout.jsx'
+import RegisterLoginLayout from './Pages/RegisterLoginLayout.jsx'
+import Login from './Components/Login.jsx'
+import Register from './Components/Register.jsx'
 
 function App() {
 
@@ -15,6 +18,13 @@ function App() {
         <Routes>
           <Route element={<DashboardLayout />}>
             <Route path='/' element={<LandingPage />}/>
+          </Route>
+        </Routes>
+
+        <Routes>
+          <Route element={<RegisterLoginLayout />}>
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
           </Route>
         </Routes>
         
