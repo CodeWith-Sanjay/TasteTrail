@@ -15,17 +15,17 @@ function App() {
     <div className='main-container'>
 
       <BrowserRouter>
+
         <Routes>
           <Route element={<DashboardLayout />}>
             <Route path='/' element={<LandingPage />}/>
           </Route>
-        </Routes>
 
-        <Routes>
           <Route element={<RegisterLoginLayout />}>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
           </Route>
+          
         </Routes>
         
       </BrowserRouter>

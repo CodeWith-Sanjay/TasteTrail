@@ -8,11 +8,13 @@ import XIcon from '@mui/icons-material/X';
 import '../styles/footer.css';
 
 import { sendContactMessage } from '../services/contactService.js';
+import Loader from './Loader/Loader.jsx';
 
 const Footer = () => {
 
     const [errorMessage, seterrorMessage] = useState({});
     const [successMessage, setSuccessMessage] = useState('');
+    const [loader, setLoader] = useState(false);
     const [contactMessage, setContactMessage] = useState({
         name: '',
         email: '',
@@ -51,11 +53,14 @@ const Footer = () => {
         seterrorMessage(validateErrors);
         if(Object.keys(validateErrors).length > 0) return;
 
+        setLoader(true);
+
         try {
             const res = await sendContactMessage(contactMessage);
             if(res.success) {
                 console.log('Contact message sent successfully');
                 setSuccessMessage('Message sent successfully');
+                setLoader(false);
                 setContactMessage({
                     name: '',
                     email: '',
@@ -63,6 +68,7 @@ const Footer = () => {
                 });
             } else {
                 seterrorMessage({form: res.message || 'Error sending message'});
+                setLoader(false);
             }
         } catch (error) {
             console.log('Error sending contact message: ', error);
@@ -85,7 +91,10 @@ const Footer = () => {
             <input type='name' name='name' onChange={handleContactChange} value={contactMessage.name} placeholder='Enter your name' className='footer-contact-input' />
             <input type='email' name='email' onChange={handleContactChange} value={contactMessage.email} placeholder='Enter your email' className='footer-contact-input' />
             <textarea placeholder='Write a message...' onChange={handleContactChange} name='message' value={contactMessage.message} className='footer-contact-textarea' />
-            <button type='submit' className='footer-contact-button' onClick={handleContactSubmit}>Send</button>
+            
+            <button type='submit' className='footer-contact-button' onClick={handleContactSubmit} disabled={loader}>
+                {loader ? <Loader /> : 'Send'}
+            </button>
             {
                 errorMessage.name ? (<p className='error-message'>{errorMessage.name}</p>) :
                 errorMessage.email ? (<p className='error-message'>{errorMessage.email}</p>) :
