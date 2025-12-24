@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema({
         type: String, 
         enum: [
             'nuts',
-            'diary',
+            'dairy',
             'soy',
             'gluten',
             'seafood',
@@ -51,9 +51,14 @@ const userSchema = new mongoose.Schema({
             'mexican',
             'thai',
             'american',
-            'meditarranean'
+            'mediterranean'
         ]
-    }]
+    }],
+
+    onBoardingCompleted: {
+        type: Boolean,
+        default: false
+    }
 }, {timestamps: true});
 
 export const User = mongoose.model('User', userSchema);
