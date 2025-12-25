@@ -8,6 +8,7 @@ import DashboardLayout from './Pages/DashboardLayout.jsx'
 import RegisterLoginLayout from './Pages/RegisterLoginLayout.jsx'
 import Login from './Components/Login.jsx'
 import Register from './Components/Register.jsx'
+import MainDashboard from './Components/MainDashboard.jsx'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route element={<DashboardLayout />}>
             <Route path='/' element={<LandingPage />}/>
+            <Route path='/dashboard' element={<MainDashboard />} />
           </Route>
 
           <Route element={<RegisterLoginLayout />}>

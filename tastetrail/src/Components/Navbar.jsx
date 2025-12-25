@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link, useLocation } from 'react-router-dom';
 
 import '../styles/navbar.css';
+import Loader from './Loader/Loader.jsx';
 
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
