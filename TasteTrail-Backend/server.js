@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 
 import contactRouter from './routes/contactRoute.js';
+import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use('/contact', contactRouter);
+app.use('/auth', authRoutes);
 
 connectDB()
 .then(
