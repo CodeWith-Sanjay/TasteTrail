@@ -141,6 +141,12 @@
     border-bottom-left-radius: 16px;
 }
 
+.login-error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
 @media (max-width: 800px) {
     .login-form-container {
         width: 100%;

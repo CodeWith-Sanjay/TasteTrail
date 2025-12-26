@@ -8,12 +8,27 @@ import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import { useEffect } from 'react';
 
 
 const Navbar = () => {
 
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if(window.scrollY > 200) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);;
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <div className='navbar-container'>
@@ -47,7 +62,7 @@ const Navbar = () => {
 
       </div>
 
-      <nav className={`navbar-options ${menuOpen ? 'open' : ''}`}>
+      <nav className={`navbar-options ${menuOpen ? 'open' : ''} ${isSticky ? 'sticky' : ''}`}>
         <ul>
           <li><Link to='/' className={location.pathname === '/' || location.pathname === '/home' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>HOME</Link></li>
           <li><Link to='/' className={location.pathname === '/features' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>FEATURES</Link></li>

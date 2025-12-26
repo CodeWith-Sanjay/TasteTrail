@@ -20,3 +20,12 @@ export const loginUser = async (loginData) => {
     }
 }
 
+export const checkProtectedRoutes = async () => {
+    try {
+        const res = await api.get('/auth/test');
+        return res
+    } catch (error) {
+        return {success: false, message: error.response?.data?.message || error.message}
+    }
+}
+

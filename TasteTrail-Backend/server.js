@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 
 import { connectDB } from './config/db.js';
 
@@ -17,6 +18,8 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use(cookieParser());
 
 app.use('/contact', contactRouter);
 app.use('/auth', authRoutes);
