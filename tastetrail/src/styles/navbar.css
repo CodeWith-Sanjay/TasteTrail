@@ -4,6 +4,7 @@
     margin: 0;
     width: 100%;
     position: relative;
+    overflow: visible;
 }
 
 .top-nav {
@@ -32,6 +33,7 @@
 
 .nav-wrapper {
     position: relative;
+    overflow: visible;
 }
 
 .top-nav-header {
@@ -41,7 +43,7 @@
     align-items: center;
     border-bottom: 1px groove lightgray;
     transition: 0.3s ease;
-    position: sticky;
+    position: relative;
 }
 
 .top-nav-header h1 {
@@ -109,12 +111,21 @@
     align-items: center;
     transition: 0.3s ease;
 
-    position: static;
-    top: 100%;
-    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
     background-color: white;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.navbar-options.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: 0.3s ease;
 }
 
 .navbar-options ul {

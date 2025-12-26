@@ -79,7 +79,7 @@ export const loginUser = async (req, res) => {
         }
 
         const accessToken = generateAccessToken({id: existingUser._id, email: existingUser.email, role: existingUser.role});
-        const refreshToken = generateAccessToken({id: existingUser._id, email: existingUser.email, role: existingUser.role});
+        const refreshToken = generateRefreshToken({id: existingUser._id, email: existingUser.email, role: existingUser.role});
 
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
