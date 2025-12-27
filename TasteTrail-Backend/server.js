@@ -7,6 +7,7 @@ import { connectDB } from './config/db.js';
 
 import contactRouter from './routes/contactRoute.js';
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -23,6 +24,7 @@ app.use(cookieParser());
 
 app.use('/contact', contactRouter);
 app.use('/auth', authRoutes);
+app.use('/user', userRoutes);
 
 connectDB()
 .then(

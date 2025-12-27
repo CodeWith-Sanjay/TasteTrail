@@ -14,7 +14,7 @@ const ProtectedRoutes = ({children}) => {
         const checkAuth = async () => {
             try {
                 await api.get('/auth/test')
-                .then(() => navigate('/dashboard'))
+                .then(() => navigate('/onBoard'))
                 .catch((err) => console.log(err))
                 setIsAuth(true)
             } catch (error) {

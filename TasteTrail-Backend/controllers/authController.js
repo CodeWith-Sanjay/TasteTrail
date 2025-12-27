@@ -29,24 +29,30 @@ export const registerUser = async (req, res) => {
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'lax',
             maxAge: 60 * 60 * 1000 // 1 hour
         });
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'lax',
             maxAge: 24 * 60 * 60 * 1000 //1 day
         });
 
         newUser.refreshToken = refreshToken;
         await newUser.save();        
 
-        console.log("REQ Body:", req.body);
+        const safeUser = {
+            id: newUser._id,
+            name: newUser.name,
+            email: newUser.email,
+            role: newUser.role
+        }
+
         return res.status(201).json({
             success: true,
             message: 'User registered successfully',
-            data: newUser
+            data: safeUser
         })
     } catch (error) {
         console.error("REGISTER ERROR:", error);
@@ -97,10 +103,17 @@ export const loginUser = async (req, res) => {
         existingUser.refreshToken = refreshToken;
         await existingUser.save();
 
+        const safeUser = {
+            id: existingUser._id,
+            name: existingUser.name,
+            email: existingUser.email,
+            role: existingUser.role
+        }
+
         return res.status(200).json({
             success: true,
             message: 'User logged in successfully',
-            data: existingUser
+            data: safeUser
         });
     } catch (error) {
         return res.status(500).json({

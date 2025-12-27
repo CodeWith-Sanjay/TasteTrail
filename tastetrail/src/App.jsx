@@ -10,6 +10,7 @@ import Login from './Components/Login.jsx'
 import Register from './Components/Register.jsx'
 import MainDashboard from './Components/MainDashboard.jsx'
 import ProtectedRoutes from './Components/ProtectedRoutes.jsx'
+import OnBoardingPage from './Components/OnBoardingPage.jsx'
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route element={<RegisterLoginLayout />}>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/onBoard' element={<ProtectedRoutes><OnBoardingPage /></ProtectedRoutes>}/>
           </Route>
           
         </Routes>
