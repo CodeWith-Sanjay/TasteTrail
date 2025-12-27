@@ -53,7 +53,7 @@ const Login = () => {
 
       if(res.success) {
         setLoader(false);
-        navigate('/dashboard', {replace: true});
+        navigate('/onBoard', {replace: true});
         console.log('Login Success: ', res.message);
 
         setLoginData({
