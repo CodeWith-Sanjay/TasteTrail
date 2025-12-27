@@ -25,37 +25,24 @@ const userSchema = new mongoose.Schema({
         default: 'user'
     },
 
-    dietType: {
-        type: String,
-        enum: ['vegan', 'vegetarian', 'keto', 'low-carb', 'gluten-free', 'non-veg']
+    preferences: {
+        diet: {
+            type: String,
+            enum: ['vegan', 'vegetarian', 'keto', 'low-carb', 'gluten-free', 'non-vegetarian']
+        },
+
+        allergies: {
+            type: [String], 
+            default: []
+        },
+
+        cuisines: {
+            type: [String],
+            default: []
+        }
     },
 
-    allergies: [{
-        type: String, 
-        enum: [
-            'nuts',
-            'dairy',
-            'soy',
-            'gluten',
-            'seafood',
-            'eggs'
-        ]
-    }],
-
-    cuisinePreferences: [{
-        type: String,
-        enum: [
-            'indian',
-            'italian',
-            'chinese',
-            'mexican',
-            'thai',
-            'american',
-            'mediterranean'
-        ]
-    }],
-
-    onBoardingCompleted: {
+    isOnboard: {
         type: Boolean,
         default: false
     }

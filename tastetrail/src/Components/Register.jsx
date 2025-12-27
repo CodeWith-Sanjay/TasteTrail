@@ -72,7 +72,7 @@ const Register = () => {
       
       if(res.success) {
         setLoader(false);
-        navigate('/dashboard');
+        navigate('/onBoard');
         console.log('Registration successful');
 
         setRegisterData({
