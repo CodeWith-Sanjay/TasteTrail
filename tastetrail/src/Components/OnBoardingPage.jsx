@@ -25,7 +25,7 @@ const OnBoardingPage = () => {
         const checkStatus = async () => {
             const res = await checkOnboardingStatus();
 
-            if(res?.isOnboarded) {
+            if(res?.isOnboard) {
                 navigate('/dashboard', {replace: true});
             }
         }
@@ -83,14 +83,14 @@ const OnBoardingPage = () => {
             if(res.success) {
                 console.log('Preferences set successfully');
                 
-                const user = JSON.parse(localStorage.getItem('user')) || {};
-                localStorage.setItem('user', 
-                    JSON.stringify({
-                        ...user,
-                        isOnboarded: true
-                    })
-                )
-                navigate('/dashboard', {replace: true});
+                // const user = JSON.parse(localStorage.getItem('user')) || {};
+                localStorage.setItem('user', JSON.stringify(res.data))
+
+                if(res?.data?.isOnboard) {
+                    navigate('/dashboard', {replace: true})
+                } else {
+                    navigate('/onBoard', {replace: true});
+                }
             } else {
             setErrors({api: res.message || 'Something went wrong'})
                 console.log('Error setting preferences: ', res.message);
@@ -103,12 +103,12 @@ const OnBoardingPage = () => {
     }
   return (
     <div className='onboarding-container'>
-        <h1>Choose Preferences</h1>
+        <h1 className='onboarding-heading'>Choose Preferences</h1>
 
-        <form onSubmit={handleOnboardingSubmit}>
+        <form onSubmit={handleOnboardingSubmit} className='onboarding-form'>
             <div className='onboarding-input-container'>
-                <p>Diet type</p>
-                <select name='diet' value={preferences.diet} onChange={handleChange}>
+                <p className='onboarding-p'>Diet type</p>
+                <select name='diet' value={preferences.diet} onChange={handleChange} className='onboarding-input'>
                     <option value=''>Select diet</option>
                     <option value='none'>None</option>
                     <option value='vegan'>Vegan</option>
@@ -121,26 +121,26 @@ const OnBoardingPage = () => {
             </div>
 
             <div className="onboarding-input-container">
-                <p>Allergies</p>
+                <p className='onboarding-p'>Allergies</p>
                 {allergies.map((item) => (
-                    <label key={item}>
-                        <input type='checkbox' value={item} onChange={(e) => handleCheckboxChange(e, 'allergies')}/>
+                    <label key={item} className='onboarding-label'>
+                        <input type='checkbox' className='onboarding-input' value={item} onChange={(e) => handleCheckboxChange(e, 'allergies')}/>
                         {item}
                     </label>
                 ))}
             </div>
 
             <div className="onboarding-input-container">
-                <p>Cuisines</p>
+                <p className='onboarding-p' label='onboarding-label'>Cuisines</p>
                 {cuisinePreferences.map((cuisine) => (
-                    <label key={cuisine}>
-                        <input type='checkbox' value={cuisine} onChange={(e) => handleCheckboxChange(e, 'cuisines')}/>
+                    <label key={cuisine} className='onboarding-label'>
+                        <input type='checkbox' className='onboarding-input' value={cuisine} onChange={(e) => handleCheckboxChange(e, 'cuisines')}/>
                         {cuisine}
                     </label>
                 ))}
             </div>
 
-            <button type='submit' disabled={loader}>
+            <button type='submit' className='onboarding-button' disabled={loader}>
             {loader ? <Loader /> : 'Submit'}</button>
 
             {

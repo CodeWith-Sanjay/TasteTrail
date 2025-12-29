@@ -46,7 +46,8 @@ export const registerUser = async (req, res) => {
             id: newUser._id,
             name: newUser.name,
             email: newUser.email,
-            role: newUser.role
+            role: newUser.role,
+            isOnboard: newUser.isOnboard
         }
 
         return res.status(201).json({
@@ -107,7 +108,8 @@ export const loginUser = async (req, res) => {
             id: existingUser._id,
             name: existingUser.name,
             email: existingUser.email,
-            role: existingUser.role
+            role: existingUser.role,
+            isOnboard: existingUser.isOnboard
         }
 
         return res.status(200).json({

@@ -3,14 +3,13 @@ import {User} from '../models/User.js';
 
 const JWT_SECRET = process.env.JWT_SECRET
 
-export const refreshTokenVerification = async (req, res, next) => {
+export const refreshTokenVerification = async (req, res) => {
     const refreshToken = req.cookies.refreshToken;
 
     if(!refreshToken) return null;
 
     try {
         const decoded = verifyRefreshToken(refreshToken);
-        console.log('Refresh token decoded data: ', decoded);
 
         if(!decoded || !decoded.id) return null;
 
@@ -25,7 +24,7 @@ export const refreshTokenVerification = async (req, res, next) => {
         res.cookie('accessToken', newAccessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'lax',
             maxAge: 60 * 60 * 1000 //1 hour
         })
 
@@ -39,19 +38,19 @@ export const refreshTokenVerification = async (req, res, next) => {
 export const accessTokenVerification = async (req, res, next) => {
     let accessToken = req.cookies.accessToken;
 
-    if(!accessToken) {
-        accessToken = await refreshTokenVerification(req, res);
+    try {
 
         if(!accessToken) {
-            return res.status(401).json({
-                success: false,
-                message: 'No access token provided'
-            })
-        }
-    }
+        accessToken = await refreshTokenVerification(req, res);
 
-    try {
-        const decoded = verifyAccessToken(accessToken);
+            if(!accessToken) {
+                return res.status(401).json({
+                    success: false,
+                    message: 'No access token provided'
+                })
+            }
+        }
+        const decoded = await verifyAccessToken(accessToken);
 
         if(!decoded || !decoded.id) {
             return res.status(401).json({
@@ -65,9 +64,29 @@ export const accessTokenVerification = async (req, res, next) => {
             role: decoded.role
         }
 
-        next();
+        return next();
 
     } catch (error) {
+
+        if(error.name === 'TokenExpiredError') {
+            const newAccessToken = await refreshTokenVerification(req, res);
+
+            if(!newAccessToken) {
+                return res.status(401).json({
+                    success: false,
+                    message: 'refresh token expired'
+                })
+            }
+
+            const decoded = await verifyAccessToken(newAccessToken);
+            req.user = {
+                id: decoded.id,
+                role: decoded.role
+            }
+
+            return next();
+        }
+
         console.log('Access token verification error: ', error.message);
         return res.status(500).json({
             success: false,

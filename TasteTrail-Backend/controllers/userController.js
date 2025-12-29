@@ -27,16 +27,25 @@ export const setUserPreferences = async (req, res) => {
         user.preferences = {
             diet: diet,
             allergies: allergies,
-            cuisines: cuisines,
-            isOboarded: true
+            cuisines: cuisines
         }
 
+        user.isOnboard = true;
+
         await user.save();
+
+        const safeUser = {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            isOnboard: user.isOnboard
+        }
 
         return res.status(200).json({
             success: true,
             message: 'User preferences updated successfully',
-            data: user.preferences
+            data: safeUser
         })
     } catch (error) {
         return res.status(500).json({
