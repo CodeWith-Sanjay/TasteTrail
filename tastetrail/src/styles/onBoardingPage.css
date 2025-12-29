@@ -1,6 +1,8 @@
 .onboarding-container {
-    width: 80vw;
-    height: 80vh;
+    width: 100%;
+    height: 100%;
+    max-height: 700px;
+    max-width: 800px;
     border-radius: 16px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     margin: 10px;
@@ -19,4 +21,120 @@
     } to {
         opacity: 1;
     }
+}
+
+.onboarding-heading {
+    font-size: 2rem;
+    margin: 20px;
+    color: #333;
+}
+
+.onboarding-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.onboarding-input-container {
+    width: 100%;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: flex-start;
+}
+
+.onboarding-input {
+    width: 100%;
+    padding: 15px 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.onboarding-input:hover,
+.onboarding-input:focus,
+.onboarding-input:active {
+    border: 1px solid #3498db;
+    outline: none;
+    color: #3498db;
+}
+
+.onboarding-p {
+    width: 30%;
+    /* position: absolute; */
+    /* top: 10px;
+    left: 40px; */
+    padding: 15px 10px;
+    font-size: 1rem;
+    color: #333;
+    margin: 10px;
+    transition: 0.3s ease;
+}
+
+.onboarding-input:hover + .onboarding-label,
+.onboarding-input:focus + .onboarding-label,
+.onboarding-input:active + .onboarding-label,
+.onboarding-input:not(:placeholder-shown) + .onboarding-label {
+    transform: translate(8px, -20px);
+    font-size: 0.8rem;
+    color: #3498db;
+    transition: 0.3s ease;
+    padding: 10px;
+    background-color: white;
+}
+
+.onboarding-label {
+    /* width: 100%; */
+    /* display: inline-block; */
+    /* flex-direction: column;
+    justify-content: space-evenly; */
+}
+
+.onboarding-button {
+    width: 80%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #db490a;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #db490a;
+    cursor: pointer;
+    margin: 20px 0;
+    transition: 0.3s ease;
+}
+
+.onboarding-button:hover {
+    background-color: #db490a;
+    color: white;
+    transition: 0.3s ease;
+}
+
+@media (max-width: 700px) {
+    .onboarding-p {
+        font-size: 1.5rem;
+        padding: 10px;
+        font-weight: bold;
+    }
+     .onboarding-container {
+        max-height: 1700px;
+     }
+     .onboarding-input-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        justify-content: center;
+     }
+     .onboarding-input {
+        margin: 0;
+     }
+     .onboarding-label {
+        text-align: center;
+        padding: 10px;
+     }
 }

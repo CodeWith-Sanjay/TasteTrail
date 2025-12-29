@@ -72,8 +72,15 @@ const Register = () => {
       
       if(res.success) {
         setLoader(false);
-        navigate('/onBoard');
         console.log('Registration successful');
+
+        localStorage.setItem('user', JSON.stringify(res.data));
+
+        if(res.data.isOnboard) {
+          navigate('/dashboard', {replace: true});
+        } else {
+          navigate('/onBoard', {replace: true})
+        }
 
         setRegisterData({
           name: '',
