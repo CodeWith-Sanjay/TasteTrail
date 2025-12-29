@@ -17,7 +17,7 @@ userRoutes.get('/me', accessTokenVerification, async (req, res) => {
 
     return res.status(200).json({
         loggedIn: true,
-        isOnboarded: user.isOnboarded
+        isOnboard: user.isOnboard
     })
 });
 userRoutes.put('/preferences', accessTokenVerification, setUserPreferences);

@@ -53,8 +53,15 @@ const Login = () => {
 
       if(res.success) {
         setLoader(false);
-        navigate('/onBoard', {replace: true});
         console.log('Login Success: ', res.message);
+
+        localStorage.setItem('user', JSON.stringify(res.data));
+
+        if(res.data.isOnboard) {
+          navigate('/dashboard', {replace: true});
+        } else {
+          navigate('/onBoard', {replace: true})
+        }
 
         setLoginData({
           email: '',
