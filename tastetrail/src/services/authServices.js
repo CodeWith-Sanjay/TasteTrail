@@ -20,6 +20,17 @@ export const loginUser = async (loginData) => {
     }
 }
 
+export const logoutUser = async () => {
+    try {
+        const res = await api.post('/auth/logout', {}, {
+            withCredentials: true
+        });
+        return res.data
+    } catch (error) {
+        return {success: false, message: error.response?.data?.message || error.message}
+    }
+}
+
 export const checkProtectedRoutes = async () => {
     try {
         const res = await api.get('/auth/test');

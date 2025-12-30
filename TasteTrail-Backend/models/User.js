@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     preferences: {
         diet: {
             type: String,
-            enum: ['vegan', 'vegetarian', 'keto', 'low-carb', 'gluten-free', 'non-vegetarian']
+            enum: ['none', 'vegan', 'vegetarian', 'keto', 'low-carb', 'gluten-free', 'non-vegetarian']
         },
 
         allergies: {
@@ -45,6 +45,11 @@ const userSchema = new mongoose.Schema({
     isOnboard: {
         type: Boolean,
         default: false
+    },
+
+    refreshToken: {
+        type: String,
+        default: null
     }
 }, {timestamps: true});
 

@@ -1,9 +1,11 @@
 import React from 'react'
 
+import MainNavbar from './MainDashboard/MainNavbar'
+
 const MainDashboard = () => {
   return (
     <div>
-      Hello from main dashboard
+      <MainNavbar />
     </div>
   )
 }
