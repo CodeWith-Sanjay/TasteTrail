@@ -5,9 +5,6 @@ export const setUserPreferences = async (req, res) => {
         const {diet, allergies, cuisines} = req.body;
         const id = req.user.id
 
-        console.log("REQ.USER:", req.user);
-        console.log("REQ.BODY:", req.body);
-
         if(!diet || !Array.isArray(allergies) || !Array.isArray(cuisines)) {
             return res.status(400).json({
                 success: false,

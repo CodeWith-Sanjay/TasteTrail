@@ -91,13 +91,13 @@ export const loginUser = async (req, res) => {
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'lax',
             maxAge: 60 * 60 * 1000 //1 hour
         });
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'lax',
             maxAge: 24 * 60 * 60 * 1000 //1 day
         });
 
@@ -129,6 +129,9 @@ export const loginUser = async (req, res) => {
 export const logoutUser = async (req, res) => {
     try {
         const {refreshToken} = req.cookies;
+
+        console.log('Cookies:', req.cookies);
+        
         if(!refreshToken) {
             return res.status(400).json({
                 success: false,
@@ -147,8 +150,16 @@ export const logoutUser = async (req, res) => {
         existingUser.refreshToken = null;
         await existingUser.save();
 
-        res.clearCookie('accessToken');
-        res.clearCookie('refreshToken');
+        res.clearCookie('accessToken', {
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: false
+        });
+        res.clearCookie('refreshToken', {
+            httpOnly: true,
+            sameSite: 'lax',
+            secure: false
+        });
 
         return res.status(200).json({
             success: true,
@@ -158,7 +169,7 @@ export const logoutUser = async (req, res) => {
         return res.status(500).json({
             success: false,
             message: 'Server error',
-            error: error.mmessage
+            error: error.message
         });
     }
 }
