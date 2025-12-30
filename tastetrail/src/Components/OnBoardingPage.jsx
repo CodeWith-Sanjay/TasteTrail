@@ -5,7 +5,7 @@ import '../styles/onBoardingPage.css';
 import Loader from './Loader/Loader.jsx';
 import { setUserPreferences,  checkOnboardingStatus} from '../services/userServices.js';
 
-const allergies = ["nuts", "dairy", "soy", "gluten", "eggs", "seafood"];
+const allergies = ['none', "nuts", "dairy", "soy", "gluten", "eggs", "seafood"];
 const cuisinePreferences = ["Indian", "Italian", "Chinese", "Mexican", "Thai", "American", "Mediterranean"];
 
 
@@ -91,6 +91,8 @@ const OnBoardingPage = () => {
                 } else {
                     navigate('/onBoard', {replace: true});
                 }
+            } else if(res.message && res.message.toLowerCase().trim().includes('user')) {
+                setErrors({api: 'User not found'});
             } else {
             setErrors({api: res.message || 'Something went wrong'})
                 console.log('Error setting preferences: ', res.message);
@@ -144,10 +146,10 @@ const OnBoardingPage = () => {
             {loader ? <Loader /> : 'Submit'}</button>
 
             {
-                errors.api ? <p>{errors.api}</p> :
-                errors.diet ? <p>{errors.diet}</p> :
-                errors.allergies ? <p>{errors.allergies}</p> :
-                errors.cuisines ? <p>{errors.cuisines}</p> : null
+                errors.api ? <p className='onboarding-error'>{errors.api}</p> :
+                errors.diet ? <p className='onboarding-error'>{errors.diet}</p> :
+                errors.allergies ? <p className='onboarding-error'>{errors.allergies}</p> :
+                errors.cuisines ? <p className='onboarding-error'>{errors.cuisines}</p> : null
             }
         </form>
     </div>

@@ -1,0 +1,214 @@
+.main-navbar-container {
+    font-family: "Inter", sans-serif;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+}
+
+.top-nav {
+    /* width: 100%; */
+    padding: 0px;
+    background-color: #6bcc90;
+}
+
+.top-nav p {
+    padding: 8px 100px;
+    margin: 0;
+    color: #333333;
+    font-size: 0.8rem;
+    transition: 0.3s ease;
+}
+
+.top-nav a {
+    transition: 0.3s ease-in;
+    text-decoration: none;
+    color: #333333;
+}
+
+.top-nav a:hover {
+    color: #f7f7f7;
+}
+
+.main-nav-wrapper {
+    position: relative;
+    overflow: visible;
+}
+
+.main-nav-header {
+    padding: 25px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px groove lightgray;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+.main-nav-header h1 {
+    font-size: 3rem;
+    font-family: "Caveat", cursive;
+    padding: 2px;
+    margin: 0;
+    font-style: italic;
+    font-weight: 900;
+    color: #333333;
+}
+
+.main-nav-header p {
+    font-size: 1rem;
+    font-family: "Libertinus Sans", sans-serif;
+    padding: 0px 8px;
+    margin: 0;
+    color: #ff6b6b;
+}
+
+.main-navbar-options {
+    padding: 0px;
+    margin: 0;
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s ease;
+
+    position: relative;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.main-navbar-options.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: 0.3s ease;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    } to {
+        transform: translateY(0);
+    }
+}
+
+.main-navbar-name {
+    width: 100%;
+    padding-left: 100px;
+    color: #ff6b6b;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.main-navbar-icons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 100px;
+    gap: 50px;
+}
+
+.account-icon,
+.logout-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform-origin: center;
+    transition: 0.3s ease;
+}
+
+.account-icon svg,
+.logout-icon svg {
+    font-size: 28px !important;
+    color: #333333;
+}
+
+.account-icon:hover svg,
+.logout-icon:hover svg {
+    color: #ff6b6b !important;
+    transition: 0.3s ease;
+}
+
+.account-icon:hover,
+.logout-icon:hover {
+    transform: scale(1.15);
+}
+
+.account-icon.active svg,
+.logout-icon.active svg {
+    color: #ff6b6b;
+}
+
+@media (min-width: 1001px) {
+  .main-navbar-options.sticky {
+    position: fixed;
+  }
+}
+
+@media (max-width: 1000px) {
+    .hamburger {
+        display: block;
+        transition: all 1s ease;
+    }
+    .main-navbar-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: white;
+        width: 100%;
+
+        transform: translateY(-40px);
+        opacity: 0;
+        visibility: hidden;
+
+        transition: transform 0.35s ease, opacity 0.35s ease;
+        pointer-events: none;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .main-navbar-options.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-nav p {
+        padding: 8px 25px;
+        transition: 0.3s ease;
+    }
+    .main-nav-header {
+        padding: 20px 25px;
+        transition: 0.3s ease;
+    }
+    .main-navbar-options {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .main-navbar-name {
+        padding: 0;
+        text-align: center;
+    }
+   
+    .main-navbar-icons {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        gap: 25px;
+    }
+}

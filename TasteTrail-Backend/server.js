@@ -26,6 +26,11 @@ app.use('/contact', contactRouter);
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 
+app.use((req, res, next) => {
+  console.log(req.method, req.url);
+  next();
+});
+
 connectDB()
 .then(
     app.listen(port, () => {
