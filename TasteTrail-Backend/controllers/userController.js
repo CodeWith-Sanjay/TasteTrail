@@ -36,7 +36,9 @@ export const setUserPreferences = async (req, res) => {
             name: user.name,
             email: user.email,
             role: user.role,
-            isOnboard: user.isOnboard
+            isOnboard: user.isOnboard,
+            preferences: user.preferences
+
         }
 
         return res.status(200).json({
