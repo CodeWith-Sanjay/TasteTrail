@@ -102,7 +102,7 @@
 .main-navbar-name {
     width: 100%;
     padding-left: 100px;
-    color: #ff6b6b;
+    color: #333333;
     font-weight: bold;
     font-size: 2rem;
 }
@@ -149,6 +149,49 @@
 .account-icon.active svg,
 .logout-icon.active svg {
     color: #ff6b6b;
+}
+
+.account-hover-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.account-hover-wrapper:hover .account-icon svg {
+    transform: scale(1.15);
+    color: #ff6b6b !important;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 160px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    transition: 0.3s ease;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+.account-dropdown a {
+    display: block;
+    padding: 6px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.account-dropdown a:hover {
+    color: #ff5722;
 }
 
 @media (min-width: 1001px) {
