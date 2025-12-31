@@ -132,34 +132,16 @@ export const logoutUser = async (req, res) => {
 
         console.log('Cookies:', req.cookies);
         
-        if(!refreshToken) {
-            return res.status(400).json({
-                success: false,
-                message: 'No refresh token provided'
-            });
+        if(refreshToken) {
+            const user = await User.findOne({refreshToken: refreshToken});
+            if(user) {
+                user.refreshToken = null;
+                await user.save();
+            }
         }
 
-        const existingUser = await User.findOne({refreshToken: refreshToken});
-        if(!existingUser) {
-            return res.status(400).json({
-                success: false,
-                message: 'Invalid refresh token'
-            })
-        }
-
-        existingUser.refreshToken = null;
-        await existingUser.save();
-
-        res.clearCookie('accessToken', {
-            httpOnly: true,
-            sameSite: 'lax',
-            secure: false
-        });
-        res.clearCookie('refreshToken', {
-            httpOnly: true,
-            sameSite: 'lax',
-            secure: false
-        });
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
 
         return res.status(200).json({
             success: true,

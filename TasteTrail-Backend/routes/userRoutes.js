@@ -20,6 +20,7 @@ userRoutes.get('/me', accessTokenVerification, async (req, res) => {
         isOnboard: user.isOnboard
     })
 });
+
 userRoutes.put('/preferences', accessTokenVerification, setUserPreferences);
 
 export default userRoutes

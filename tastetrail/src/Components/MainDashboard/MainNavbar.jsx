@@ -8,6 +8,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 import { logoutUser } from '../../services/authServices.js';
 import './mainNavbar.css';
+import Loader from '../Loader/Loader.jsx';
 
 const MainNavbar = () => {
 
@@ -16,6 +17,7 @@ const MainNavbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
     const [loader, setLoader] = useState(false);
+    const [isMouseHover, setIsMouseHover] = useState(false);
 
     const user = JSON.parse(localStorage.getItem('user')) || {};
 
@@ -49,8 +51,18 @@ const MainNavbar = () => {
         } catch (error) {
             console.log('Error logging out user: ', error.message);
         } finally {
+            localStorage.removeItem('user');
+            navigate('/login');
             setLoader(false)
         }
+    }
+
+    if(loader) {
+      return (
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', minHeight: '100vh'}}>
+          <Loader />
+        </div>
+      )
     }
 
   return (
@@ -84,9 +96,23 @@ const MainNavbar = () => {
         <h1 className='main-navbar-name'>Hello {user.name || 'User'}</h1>
 
         <div className='main-navbar-icons'>
+          <div className="account-hover-wrapper" onMouseEnter={() => setIsMouseHover(true)} onMouseLeave={() => setIsMouseHover(false)}>
             <span className='account-icon'>
                 <AccountCircleIcon />
             </span>
+
+            {isMouseHover && (
+              <div className='account-dropdown'>
+                <p>Name: {user.name}</p>
+                <p>Email: {user.email}</p>
+
+                <p>Diet: {user.preferences?.diet}</p>
+                <p>Allergies: {user.preferences?.allergies}</p>
+                <p>cuisines: {user.preferences?.cuisines}</p>
+              </div>
+            )}
+          </div>
+            
 
             <span className='logout-icon' onClick={handleLogout}>
                 <LogoutIcon />

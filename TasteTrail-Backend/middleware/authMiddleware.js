@@ -19,7 +19,7 @@ export const refreshTokenVerification = async (req, res) => {
         }
 
         const newAccessToken = generateAccessToken({id: decoded.id, role: decoded.role});
-        console.log('New access token generated: ', newAccessToken);
+        console.log('New access token generated👍: ', newAccessToken);
 
         res.cookie('accessToken', newAccessToken, {
             httpOnly: true,
@@ -30,7 +30,7 @@ export const refreshTokenVerification = async (req, res) => {
 
         return newAccessToken;
     } catch (error) {
-        console.log('Refresh token verification error: ', error.message);
+        console.log('Refresh token verification error❌: ', error.message);
         return null
     }
 }
@@ -46,7 +46,7 @@ export const accessTokenVerification = async (req, res, next) => {
             if(!accessToken) {
                 return res.status(401).json({
                     success: false,
-                    message: 'No access token provided'
+                    message: '❌ No access token provided'
                 })
             }
         }
@@ -55,7 +55,7 @@ export const accessTokenVerification = async (req, res, next) => {
         if(!decoded || !decoded.id) {
             return res.status(401).json({
                 success: false,
-                message: 'Invalid access token'
+                message: '❌ Invalid access token'
             })
         }
 
@@ -74,7 +74,7 @@ export const accessTokenVerification = async (req, res, next) => {
             if(!newAccessToken) {
                 return res.status(401).json({
                     success: false,
-                    message: 'refresh token expired'
+                    message: 'refresh token expired ❌'
                 })
             }
 
@@ -90,7 +90,7 @@ export const accessTokenVerification = async (req, res, next) => {
         console.log('Access token verification error: ', error.message);
         return res.status(500).json({
             success: false,
-            message: 'Server error during access token verification',
+            message: '❌ Server error during access token verification',
             error: error.message
         })
     }
