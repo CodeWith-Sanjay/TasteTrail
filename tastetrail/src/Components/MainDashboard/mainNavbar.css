@@ -105,6 +105,7 @@
     color: #333333;
     font-weight: bold;
     font-size: 2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .main-navbar-icons {
@@ -168,9 +169,10 @@
     background-color: white;
     border-radius: 8px;
     padding: 10px;
-    min-width: 160px;
+    min-width: 300px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     z-index: 100;
+    text-align: center;
     transition: 0.3s ease;
     animation: fadeIn 0.3s ease;
 }
@@ -183,7 +185,7 @@
     }
 }
 
-.account-dropdown a {
+/* .account-dropdown a {
     display: block;
     padding: 6px 0;
     color: #333;
@@ -192,6 +194,42 @@
 
 .account-dropdown a:hover {
     color: #ff5722;
+} */
+
+.account-details {
+    font-size: 1.2rem;
+    /* padding: 2px; */
+    font-weight: 500;
+    text-align: justify;
+    color: #ff5722;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.account-values {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #333;
+    padding: 0;
+}
+
+.edit-preference-btn {
+    margin-top: 10px;
+    height: 35px;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    outline: none;
+    border: 1px groove #ff5722;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    transition: 0.3s ease;
+}
+
+.edit-preference-btn:hover {
+    background-color: #ff5722;
+    color: white;
+    transition: 0.3s ease;
 }
 
 @media (min-width: 1001px) {
@@ -253,5 +291,14 @@
         align-items: center;
         padding: 10px 0;
         gap: 25px;
+    }
+    .account-dropdown {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 400px) {
+    .account-dropdown {
+        min-width: 100px;
     }
 }

@@ -12,6 +12,7 @@ import MainDashboard from './Components/MainDashboard.jsx'
 import ProtectedRoutes from './Components/ProtectedRoutes.jsx'
 import OnBoardingPage from './Components/OnBoardingPage.jsx'
 import AuthOnlyRoute from './Components/AuthOnlyRoute.jsx'
+import EditPreferences from './Components/EditPreferences.jsx'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route element={<DashboardLayout />}>
             <Route path='/' element={<LandingPage />}/>
             <Route path='/dashboard' element={<ProtectedRoutes><MainDashboard /></ProtectedRoutes>} />
+            <Route path='/edit-preferences' element={<ProtectedRoutes><EditPreferences /></ProtectedRoutes>} />
           </Route>
 
           <Route element={<RegisterLoginLayout />}>

@@ -103,12 +103,30 @@ const MainNavbar = () => {
 
             {isMouseHover && (
               <div className='account-dropdown'>
-                <p>Name: {user.name}</p>
-                <p>Email: {user.email}</p>
+                <p className='account-details'>Name: <span className='account-values'>{user.name}</span></p>
+                <p className='account-details'>Email: <span className='account-values'>{user.email}</span></p>
 
-                <p>Diet: {user.preferences?.diet}</p>
-                <p>Allergies: {user.preferences?.allergies}</p>
-                <p>cuisines: {user.preferences?.cuisines}</p>
+                <p className='account-details'>Diet: 
+                  <span className='account-values'>
+                    {user.preferences?.diet}
+                  </span>
+                </p>
+
+                <p className='account-details'>Allergies: 
+                  <span className='account-values'>
+                    {user.preferences?.allergies.join(', ')}
+                  </span>
+                </p>
+
+                <p className='account-details'>cuisines: 
+                  <span className='account-values'>
+                    {user.preferences?.cuisines.join(', ')}
+                  </span>
+                </p>
+
+                <button onClick={() => navigate('/edit-preferences')} className='edit-preference-btn'>
+                  Edit Preferences
+                </button>
               </div>
             )}
           </div>
