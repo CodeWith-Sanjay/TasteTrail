@@ -29,6 +29,17 @@ const recipeSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    diet: {
+        type: String,
+        enum: ['vegan', 'vegetarian', 'non-vegetarian', 'keto', 'gluten-free'],
+        required: true
+    },
+    allergies: [{
+        type: String
+    }],
+    cuisines: [{
+        type: String
+    }],
     category: {
         type: String,
         enum: ['breakfast', 'lunch', 'dinner', 'dessert'],
