@@ -13,37 +13,37 @@ const mealPlanSchema = new mongoose.Schema({
     slots: {
         Sunday: {
             breakfast: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
-            lunck: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+            lunch: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
             dinner: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
         },
         Monday: {
             breakfast: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
-            lunck: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+            lunch: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
             dinner: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
         },
         Tuesday: {
             breakfast: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
-            lunck: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+            lunch: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
             dinner: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
         },
         Wednesday: {
             breakfast: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
-            lunck: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+            lunch: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
             dinner: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
         },
         Thursday: {
             breakfast: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
-            lunck: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+            lunch: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
             dinner: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
         },
         Friday: {
             breakfast: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
-            lunck: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+            lunch: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
             dinner: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
         },
         Saturday: {
             breakfast: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
-            lunck: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
+            lunch: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'},
             dinner: {type: mongoose.Schema.Types.ObjectId, ref: 'Recipe'}
         }
     },

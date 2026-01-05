@@ -1,5 +1,5 @@
 import express from 'express';
-import { setUserPreferences } from '../controllers/userController.js';
+import { editPreferences, setUserPreferences } from '../controllers/userController.js';
 import { accessTokenVerification } from '../middleware/authMiddleware.js';
 import { User } from '../models/User.js';
 
@@ -22,5 +22,6 @@ userRoutes.get('/me', accessTokenVerification, async (req, res) => {
 });
 
 userRoutes.put('/preferences', accessTokenVerification, setUserPreferences);
+userRoutes.put('/editPreferences', accessTokenVerification, editPreferences);
 
 export default userRoutes

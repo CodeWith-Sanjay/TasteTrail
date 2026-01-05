@@ -25,13 +25,13 @@ function App() {
           <Route element={<DashboardLayout />}>
             <Route path='/' element={<LandingPage />}/>
             <Route path='/dashboard' element={<ProtectedRoutes><MainDashboard /></ProtectedRoutes>} />
-            <Route path='/edit-preferences' element={<ProtectedRoutes><EditPreferences /></ProtectedRoutes>} />
           </Route>
 
           <Route element={<RegisterLoginLayout />}>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/onBoard' element={<AuthOnlyRoute><OnBoardingPage /></AuthOnlyRoute>}/>
+            <Route path='/edit-preferences' element={<ProtectedRoutes><EditPreferences /></ProtectedRoutes>} />
           </Route>
           
         </Routes>

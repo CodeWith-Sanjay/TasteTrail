@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import MainNavbar from './MainDashboard/MainNavbar.jsx'
 import { getDashboard } from '../services/dashboardService.js';
+import MainHero from './MainDashboard/MainHero.jsx';
 
 const MainDashboard = () => {
 
@@ -13,6 +14,13 @@ const MainDashboard = () => {
     const fetchDashboard = async () => {
       try {
         const res = await getDashboard();
+
+        if(res.success) {
+          localStorage.setItem('user', JSON.stringify(res.data));
+        } else if (res.status === 401) {
+          localStorage.clear();
+          navigate('/login', {replace: true})
+        }
         console.log(res.message);
       } catch (error) {
         if(error.response?.status === 401) {
@@ -26,9 +34,11 @@ const MainDashboard = () => {
 
     fetchDashboard();
   }, []);
+
   return (
     <div>
       <MainNavbar />
+      <MainHero />
     </div>
   )
 }
