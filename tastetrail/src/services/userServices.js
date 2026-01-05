@@ -17,3 +17,12 @@ export const setUserPreferences = async (preferenceData) => {
         return {success: false, message: error.message}
     }
 }
+
+export const editUserPreferences = async (preferenceData) => {
+    try {
+        const res = await api.put('/user/editPreferences', preferenceData);
+        return res.data
+    } catch (error) {
+        return {success: false, message: error.message}
+    }
+}

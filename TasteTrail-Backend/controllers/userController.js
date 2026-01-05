@@ -60,9 +60,9 @@ export const editPreferences = async (req, res) => {
         const id = req.user.id
 
         if(!diet) {
-            return res.status(404).json({
+            return res.status(400).json({
                 success: false,
-                message: 'Invalid preferences data'
+                message: 'Diet is required'
             });
         }
 
@@ -72,7 +72,7 @@ export const editPreferences = async (req, res) => {
                 allergies: allergies || [],
                 cuisines: cuisines || []
             }
-        }, {new: true});
+        }, {new: true}).select('preferences isOnboard');
 
         if(!user) {
             return res.status(404).json({
@@ -84,7 +84,7 @@ export const editPreferences = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: 'Preferences updated successfully',
-            data: user.preferences
+            data: user
         });
 
 
