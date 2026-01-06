@@ -8,52 +8,36 @@ const MONGODB_URL = process.env.MONGODB_URL;
 mongoose.connect(MONGODB_URL);
 
 const recipes = [{
-  recipeName: "Vegetable Upma",
-  description: "South Indian breakfast",
+  recipeName: "Paneer Butter Masala",
+  description: "Rich paneer curry",
   ingredients: [
-    { name: "Rava", quantity: 1, unit: "cup" },
-    { name: "Vegetables", quantity: 1, unit: "cup" }
+    { name: "Paneer", quantity: 200, unit: "g" }
   ],
-  makingSteps: "Cook rava with vegetables",
-  prepTime: 10,
-  cookTime: 15,
-  totalTime: 25,
+  makingSteps: "Cook paneer in butter gravy",
+  prepTime: 15,
+  cookTime: 25,
+  totalTime: 40,
   diet: "vegetarian",
-  allergies: ["gluten"],
+  allergies: ["dairy"],
   cuisines: ["Indian"],
-  category: "breakfast"
+  category: "dinner"
 },
 {
-  recipeName: "Poha",
-  description: "Light Indian breakfast",
+  recipeName: "Grilled Fish",
+  description: "Healthy seafood dinner",
   ingredients: [
-    { name: "Flattened Rice", quantity: 1, unit: "cup" }
+    { name: "Fish", quantity: 250, unit: "g" }
   ],
-  makingSteps: "Cook poha with spices",
+  makingSteps: "Grill fish with spices",
   prepTime: 10,
-  cookTime: 10,
-  totalTime: 20,
-  diet: "vegetarian",
-  allergies: [],
-  cuisines: ["Indian"],
-  category: "breakfast"
-},
-{
-  recipeName: "Smoothie Bowl",
-  description: "Healthy fruit bowl",
-  ingredients: [
-    { name: "Banana", quantity: 1, unit: "pcs" },
-    { name: "Berries", quantity: 1, unit: "cup" }
-  ],
-  makingSteps: "Blend fruits and serve",
-  prepTime: 5,
-  cookTime: 0,
-  totalTime: 5,
-  diet: "vegan",
-  allergies: [],
-  cuisines: ["American"],
-  category: "breakfast"
+  cookTime: 20,
+  totalTime: 30,
+  diet: "non-vegetarian",
+  allergies: ["seafood"],
+  cuisines: ["Mediterranean"],
+  category: "dinner"
 }
+
 ]
 
 export const seedRecipes = async () => {
@@ -66,3 +50,5 @@ export const seedRecipes = async () => {
         process.exit(1)
     }
 }
+
+seedRecipes();

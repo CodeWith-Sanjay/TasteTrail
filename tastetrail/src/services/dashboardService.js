@@ -8,3 +8,12 @@ export const getDashboard = async () => {
         return {success: false, message: error.message}
     }
 }
+
+export const getTodayRecipe = async () => {
+    try {
+        const res = await api.get('/dashboard/todayRecipe');
+        return res.data
+    } catch (error) {
+        return {success: false, message: error.message}
+    }
+}

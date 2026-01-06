@@ -28,6 +28,9 @@ app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/dashboard', dashboardRoutes);
 
+console.log('Data', new Date().toString());
+console.log('Hours', new Date().getHours());
+
 app.use((req, res, next) => {
   console.log(req.method, req.url);
   next();
