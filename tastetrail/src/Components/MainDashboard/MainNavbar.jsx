@@ -23,7 +23,7 @@ const MainNavbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-          if(window.scrollY > 200) {
+          if(window.scrollY > 120) {
             setIsSticky(true);
           } else {
             setIsSticky(false)
