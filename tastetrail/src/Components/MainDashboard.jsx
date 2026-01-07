@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import MainNavbar from './MainDashboard/MainNavbar.jsx'
 import { getDashboard } from '../services/dashboardService.js';
 import MainHero from './MainDashboard/MainHero.jsx';
+import WeeklyMealPlan from './MainDashboard/WeeklyMealPlan.jsx';
 
 const MainDashboard = () => {
 
@@ -39,6 +40,7 @@ const MainDashboard = () => {
     <div>
       <MainNavbar />
       <MainHero />
+      <WeeklyMealPlan />
     </div>
   )
 }
