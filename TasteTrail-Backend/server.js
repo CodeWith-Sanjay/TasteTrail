@@ -9,6 +9,7 @@ import contactRouter from './routes/contactRoute.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import dashboardRoutes from './routes/dashboardRoutes.js';
+import mealPlanRoutes from './routes/mealPlanRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -27,9 +28,9 @@ app.use('/contact', contactRouter);
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
 app.use('/dashboard', dashboardRoutes);
+app.use('/mealPlan', mealPlanRoutes);
 
-console.log('Data', new Date().toString());
-console.log('Hours', new Date().getHours());
+// console.log('Week', new Date().getDay());
 
 app.use((req, res, next) => {
   console.log(req.method, req.url);
