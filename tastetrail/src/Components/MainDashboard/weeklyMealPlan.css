@@ -33,6 +33,16 @@
     font-size: 1.2rem;
     font-weight: 500;
     color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.weekly-plan-day-selector p:hover {
+    color: #ff4141;
+}
+
+.weekly-plan-day-selector p.active {
+    color: #ff4141;
 }
 
 .recipe-plan-container {
