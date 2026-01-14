@@ -16,8 +16,10 @@ const app = express();
 const port = process.env.PORT || 5000
 
 app.use(cors({
-    origin: 'https://taste-trail-psi.vercel.app',
-    credentials: true
+  origin: [
+    "http://localhost:5173",
+    process.env.FrontendOrigin], // React dev server
+  credentials: true, // must be true for cookies
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
