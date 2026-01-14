@@ -14,13 +14,18 @@ import mealPlanRoutes from './routes/mealPlanRoutes.js';
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000
+const frontendOrigin = process.env.FrontendOrigin
 
 app.use(cors({
   origin: [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    frontendOrigin
     ],
   credentials: true, // must be true for cookies
 }));
+
+app.options('*', cors());
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
