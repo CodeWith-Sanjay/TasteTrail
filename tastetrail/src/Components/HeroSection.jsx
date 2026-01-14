@@ -10,7 +10,8 @@ import HowItsWorkPlanMeals from '../assets/Howitsworks-PlanMeals.jpg';
 
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
-import '../styles/HeroSection.css';
+
+import '../styles/heroSection.css';
 
 const HowItsWorksContent = [
   {
