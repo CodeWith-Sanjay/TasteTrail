@@ -14,6 +14,7 @@ export const registerUser = async (registerData) => {
 export const loginUser = async (loginData) => {
     try {
         const res = await api.post('/auth/login', loginData);
+        console.log(import.meta.env.VITE_API_URL)
         return res.data;
     } catch (error) {
         return {success: false, message: error.response?.data?.message || error.message}
