@@ -65,9 +65,9 @@ const Navbar = () => {
       <nav className={`navbar-options ${menuOpen ? 'open' : ''} ${isSticky ? 'sticky' : ''}`}>
         <ul>
           <li><Link to='/' className={location.pathname === '/' || location.pathname === '/home' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>HOME</Link></li>
-          <li><Link to='/' className={location.pathname === '/features' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>FEATURES</Link></li>
-          <li><Link to='/' className={location.pathname === '/howitworks' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>HOW IT WORKS</Link></li>
-          <li><Link to='/' className={location.pathname === '/contact' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>CONTACT</Link></li>
+          <li><Link to='/features' className={location.pathname === '/features' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>FEATURES</Link></li>
+          <li><Link to='/howItsWorks' className={location.pathname === '/howItsWorks' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>HOW IT WORKS</Link></li>
+          <li><Link to='/contact' className={location.pathname === '/contact' ? 'active-option' : 'option-link'} style={{textDecoration: 'none'}}>CONTACT</Link></li>
           <Link className='navbar-link' to='/login'>LOGIN</Link>
           <Link className='navbar-link' to='/register'>SIGN UP</Link>
         </ul>

@@ -1,0 +1,40 @@
+.howItsWorks-container {
+    padding: 0;
+    margin: 0; 
+    position: relative; 
+}
+
+.howItsWorks-main-content {
+    min-height: 60vh;
+    padding: 20px 100px;
+    transition: all 0.3s ease;
+    background: rgba(255, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.howItsWorks-main-content h1 {
+    font-size: 2.8rem;
+    color: #ff6b6b;
+}
+
+.howItsWorks-main-content p {
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 30px;
+    color: #333;
+}
+
+.howItsWorks-main-content img {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+    background-size: contain;
+    margin: 20px 0;
+    max-height: 580px;
+}
+
+@media (max-width: 600px) {
+    .howItsWorks-main-content {
+        padding: 20px 30px;
+    }
+}
