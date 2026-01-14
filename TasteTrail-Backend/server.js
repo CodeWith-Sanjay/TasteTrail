@@ -16,11 +16,24 @@ const app = express();
 const port = process.env.PORT || 5000
 
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    process.env.FrontendOrigin], // React dev server
-  credentials: true, // must be true for cookies
+  origin: (origin, callback) => {
+    const allowed = [
+      "http://localhost:5173",
+      "https://taste-trail-psi.vercel.app"
+    ];
+
+    if (!origin || allowed.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS blocked"));
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+app.options("*", cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
