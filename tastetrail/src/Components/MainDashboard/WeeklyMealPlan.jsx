@@ -1,23 +1,30 @@
 import React, {useState, useEffect} from 'react'
 
-import { currentWeekMealPlan } from '../../services/mealPlanServices.js';
+import Loader from '../Loader/Loader.jsx';
+import { currentWeekMealPlan, changeRecipe } from '../../services/mealPlanServices.js';
 import './weeklyMealPlan.css';
 
 const WeeklyMealPlan = () => {
 
+    const [loader, setLoader] = useState(false);
     const [mealPlan, setMealPlan] = useState(null);
     const [selectedDay, setSelectedDay] = useState('');
 
     useEffect(() => {
         const fetchCurrentWeekMealPlan = async () => {
             try {
+                setLoader(true)
                 const res = await currentWeekMealPlan();
 
                 if(res.success) {
                     setMealPlan(res.data)
                 }
+                console.log('API RESPONSE:', res);
+
             } catch (error) {
                 console.log('Error fetching current week meal plan: ', error.message);
+            } finally {
+                setLoader(false)
             }
         }
 
@@ -29,6 +36,10 @@ const WeeklyMealPlan = () => {
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         setSelectedDay(days[todayIndex])
     }, [])
+
+    // const handleChangeRecipe = () => {
+
+    // }
 
     const dayMeals = mealPlan?.slots?.[selectedDay]
   return (
@@ -46,11 +57,12 @@ const WeeklyMealPlan = () => {
                 <p onClick={() => setSelectedDay('Saturday')} className={selectedDay === 'Saturday' ? 'active' : ''}>Sat</p>
             </div>
 
+            {loader ? <Loader /> :
             <div className='recipe-plan-container'>
                 {dayMeals?.breakfast && (
                 <div className='breakfast-container'>    
                     <h1 className='recipe-header'>Breakfast Recipe</h1>
-                    <p className='recipe-font'>{dayMeals.breakfast.name}</p>
+                    <p className='recipe-font'>{dayMeals.breakfast.recipeName}</p>
                     <p className='recipe-font'>{dayMeals.breakfast.cuisines} 💠 {dayMeals.breakfast.totalTime} mins</p>
                     <details className='recipe-font'>
                         <summary>Ingredients</summary>
@@ -67,9 +79,9 @@ const WeeklyMealPlan = () => {
                 )}
 
                 {dayMeals?.lunch && (
-                <div className='lunch-container'>    
+                <div className='lunch-container'>   
                     <h1 className='recipe-header'>Lunch Recipe</h1>
-                    <p className='recipe-font'>{dayMeals.lunch.name}</p>
+                    <p className='recipe-font'>{dayMeals.lunch.recipeName}</p>
                     <p className='recipe-font'>{dayMeals.lunch.cuisines} 💠 {dayMeals.lunch.totalTime} mins</p>
                     <details className='recipe-font'>
                         <summary>Ingredients</summary>
@@ -88,7 +100,7 @@ const WeeklyMealPlan = () => {
                 {dayMeals?.dinner && (
                 <div className='dinner-container'>    
                     <h1 className='recipe-header'>Dinner Recipe</h1>
-                    <p className='recipe-font'>{dayMeals.dinner.name}</p>
+                    <p className='recipe-font'>{dayMeals.dinner.recipeName}</p>
                     <p className='recipe-font'>{dayMeals.dinner.cuisines} 💠 {dayMeals.dinner.totalTime} mins</p>
                     <details className='recipe-font'>
                         <summary>Ingredients</summary>
@@ -103,7 +115,8 @@ const WeeklyMealPlan = () => {
                     <button className='recipe-changer'>Change Recipe</button>
                 </div>
                 )}
-            </div>
+            </div> 
+            }
         </div>
     </div>
   )

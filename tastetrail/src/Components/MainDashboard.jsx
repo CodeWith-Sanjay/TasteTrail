@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
+import Footer from './Footer.jsx';
 import MainNavbar from './MainDashboard/MainNavbar.jsx'
 import { getDashboard } from '../services/dashboardService.js';
 import MainHero from './MainDashboard/MainHero.jsx';
@@ -41,6 +41,7 @@ const MainDashboard = () => {
       <MainNavbar />
       <MainHero />
       <WeeklyMealPlan />
+      <Footer />
     </div>
   )
 }

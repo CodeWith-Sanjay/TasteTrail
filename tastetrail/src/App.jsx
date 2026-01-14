@@ -13,6 +13,9 @@ import ProtectedRoutes from './Components/ProtectedRoutes.jsx'
 import OnBoardingPage from './Components/OnBoardingPage.jsx'
 import AuthOnlyRoute from './Components/AuthOnlyRoute.jsx'
 import EditPreferences from './Components/EditPreferences.jsx'
+import Features from './Components/Features.jsx'
+import HowItsWorks from './Components/HowItsWorks.jsx'
+import ContactPage from './Components/ContactPage.jsx'
 
 function App() {
 
@@ -24,6 +27,9 @@ function App() {
         <Routes>
           <Route element={<DashboardLayout />}>
             <Route path='/' element={<LandingPage />}/>
+            <Route path='/features' element={<Features />} />
+            <Route path='/howItsWorks' element={<HowItsWorks />}/>
+            <Route path='/contact' element={<ContactPage />}/>
             <Route path='/dashboard' element={<ProtectedRoutes><MainDashboard /></ProtectedRoutes>} />
           </Route>
 
