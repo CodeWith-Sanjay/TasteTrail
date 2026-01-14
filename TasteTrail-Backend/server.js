@@ -24,8 +24,6 @@ app.use(cors({
   credentials: true, // must be true for cookies
 }));
 
-app.options('/*', cors());
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
